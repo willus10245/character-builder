@@ -2,7 +2,7 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "deploy": "cp -R static/* ../priv/static && parcel build ./js/app.js ./css/app.css --out-dir priv/static --no-cache",
+    "deploy": "cp -R static/* ../priv/static && parcel build ./js/app.js ./css/app.css --out-dir ../priv/static --no-cache",
     "watch": "cp -R static/* ../priv/static && parcel watch ./js/app.js ./css/app.css --out-dir ../priv/static"
   },
   "dependencies": {
