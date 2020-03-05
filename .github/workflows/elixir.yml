@@ -39,6 +39,7 @@ jobs:
       - name: Run Tests
         run: |
           mix format --check-formatted
+          mix credo --strict
           mix test
 
   deploy:
