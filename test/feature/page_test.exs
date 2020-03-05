@@ -4,11 +4,13 @@ defmodule Dnd.Feature.CharacterTest do
 
   setup do
     Hound.start_session()
+
+    :ok
   end
 
   describe "Given a dwarf character with a base constitution score of 10" do
     test "When a user loads the character sheet" do
-      navigate_to("http://localhost:4002/character")
+      navigate_to("http://localhost:4002")
 
       h1 = find_element(:tag, "h1")
       assert inner_text(h1) =~ "Welcome to Phoenix!"

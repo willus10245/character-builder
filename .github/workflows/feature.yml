@@ -40,11 +40,13 @@ jobs:
           mix deps.get
           npm --prefix assets install
 
+      - name: Check Code Quality
+        run: |
+          mix format --check-formatted
+          mix credo --strict
+
       - name: Start Chromedriver
         run: $CHROMEWEBDRIVER/chromedriver &
 
       - name: Run Tests
-        run: |
-          mix format --check-formatted
-          mix credo --strict
-          mix test --include feature
+        run: mix test --include feature
