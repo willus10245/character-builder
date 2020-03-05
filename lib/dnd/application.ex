@@ -8,8 +8,6 @@ defmodule Dnd.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the Ecto repository
-      Dnd.Repo,
       # Start the endpoint when the application starts
       DndWeb.Endpoint
       # Starts a worker by calling: Dnd.Worker.start_link(arg)
