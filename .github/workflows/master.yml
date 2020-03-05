@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -45,9 +48,6 @@ jobs:
   deploy:
     # only run this job if the build job succeeds
     needs: build
-
-    # only run this job if the workflow is running on the master branch
-    if: github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
 
