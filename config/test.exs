@@ -10,4 +10,7 @@ config :dnd, DndWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-config :hound, driver: "chrome_driver", browser: "chrome_headless"
+config :hound,
+  driver: "chrome_driver",
+  browser: "chrome_headless",
+  retry_time: 500
