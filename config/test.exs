@@ -13,4 +13,5 @@ config :logger, level: :warn
 config :hound,
   driver: "chrome_driver",
   browser: "chrome_headless",
+  retries: 3,
   retry_time: 500
