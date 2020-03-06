@@ -45,8 +45,9 @@ jobs:
           mix format --check-formatted
           mix credo --strict
 
-      - name: Start Chromedriver
-        run: $CHROMEWEBDRIVER/chromedriver &
+      # - name: Start Chromedriver
 
       - name: Run Tests
-        run: mix test --include feature
+        run: |
+          $CHROMEWEBDRIVER/chromedriver &
+          mix test --include feature

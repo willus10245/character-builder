@@ -1,4 +1,4 @@
-defmodule Dnd.Feature.CharacterTest do
+defmodule Dnd.Feature.PageTest do
   use ExUnit.Case
   use Dnd.FeatureCase
 
