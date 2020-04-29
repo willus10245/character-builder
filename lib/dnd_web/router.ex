@@ -1,5 +1,6 @@
 defmodule DndWeb.Router do
   use DndWeb, :router
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -17,6 +18,13 @@ defmodule DndWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+  end
+
+  if Mix.env() == :dev do
+    scope "/" do
+      pipe_through :browser
+      live_dashboard "/dashboard"
+    end
   end
 
   # Other scopes may use custom stacks.

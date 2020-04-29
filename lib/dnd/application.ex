@@ -8,10 +8,8 @@ defmodule Dnd.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
-      DndWeb.Endpoint
-      # Starts a worker by calling: Dnd.Worker.start_link(arg)
-      # {Dnd.Worker, arg},
+      DndWeb.Endpoint,
+      {Phoenix.PubSub, [name: Dnd.PubSub, adapter: Phoenix.PubSub.PG2]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
