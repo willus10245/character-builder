@@ -8,7 +8,8 @@ defmodule Dnd.FeatureCase do
 
   using do
     quote do
-      use Phoenix.ConnTest
+      import Plug.Conn
+      import Phoenix.ConnTest
       alias DndWeb.Router.Helpers, as: Routes
       use Hound.Helpers
 

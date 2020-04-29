@@ -12,7 +12,7 @@ config :dnd, DndWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "NCnELO98jppcgFwZI22kbSk0zZRn+PrLrCBx7zt/lZ3tXw37y6/etpIqIskTKrRv",
   render_errors: [view: DndWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Dnd.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: Dnd.PubSub,
   live_view: [signing_salt: "Eh0m7tY/oRR4xFp4vMYSh6mPYUY/fEOP"]
 
 # Configures Elixir's Logger
