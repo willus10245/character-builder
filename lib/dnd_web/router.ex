@@ -2,6 +2,8 @@ defmodule DndWeb.Router do
   use DndWeb, :router
   import Phoenix.LiveDashboard.Router
 
+  # here is a comment
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
