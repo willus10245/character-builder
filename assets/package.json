@@ -2,14 +2,15 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "deploy": "cp -R static/* ../priv/static && parcel build ./js/app.js ./css/app.css --out-dir ../priv/static --no-cache",
-    "watch": "cp -R static/* ../priv/static && parcel watch ./js/app.js ./css/app.css --out-dir ../priv/static"
+    "deploy": "cp -R static/* ../priv/static && parcel build ./js/app.js ./css/app.scss --out-dir ../priv/static --no-cache",
+    "watch": "cp -R static/* ../priv/static && parcel watch ./js/app.js ./css/app.scss --out-dir ../priv/static"
   },
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html"
   },
   "devDependencies": {
-    "parcel": "latest"
+    "parcel": "latest",
+    "sass": "^1.26.5"
   }
 }
