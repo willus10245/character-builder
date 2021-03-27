@@ -11,7 +11,7 @@ defmodule Dnd.FeatureCase do
       import Plug.Conn
       import Phoenix.ConnTest
       alias DndWeb.Router.Helpers, as: Routes
-      use Hound.Helpers
+      # use Hound.Helpers
 
       @endpoint DndWeb.Endpoint
       @moduletag :feature
