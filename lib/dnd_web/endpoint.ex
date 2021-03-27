@@ -1,6 +1,10 @@
 defmodule DndWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :dnd
 
+  if Application.get_env(:dnd, :sql_sandbox) do
+    plug Phoenix.Ecto.SQL.Sandbox
+  end
+
   @session_options store: :cookie,
                    key: "_dnd_key",
                    signing_salt: "yAGNkI80"
