@@ -1,17 +1,13 @@
 defmodule Dnd.Feature.PageTest do
   use ExUnit.Case
-  use Dnd.FeatureCase
+  use Wallaby.Feature
 
-  setup do
-    Hound.start_session()
+  import Wallaby.Query
 
-    :ok
-  end
-
-  test "site exists" do
-    navigate_to("http://localhost:4002")
-
-    h1 = find_element(:tag, "h1")
-    assert inner_text(h1) =~ "Welcome to Phoenix!"
+  feature "site exists", %{session: session} do
+    session
+    |> visit("/")
+    |> find(css("h1"))
+    |> assert_text("Welcome to Phoenix!")
   end
 end

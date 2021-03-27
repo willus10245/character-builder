@@ -44,7 +44,7 @@ defmodule Dnd.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:hound, "~> 1.1.0", only: :test},
+      {:wallaby, "~> 0.28.0", runtime: false, only: :test},
       {:credo, "~> 1.4.0", only: [:dev, :test], runtime: false}
     ]
   end
@@ -55,9 +55,18 @@ defmodule Dnd.MixProject do
   #     $ mix ecto.setup
   #
   # See the documentation for `Mix` for more info on aliases.
-  defp aliases do
-    [
-      test: ["test"]
+  defp aliases,
+    do: [
+      test: [
+        "assets.compile --quiet",
+        "test"
+      ],
+      "assets.compile": &compile_assets/1
     ]
+
+  defp compile_assets(_) do
+    Mix.shell().cmd("cd assets && ./node_modules/.bin/webpack --mode development",
+      quiet: true
+    )
   end
 end
