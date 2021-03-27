@@ -17,6 +17,8 @@ defmodule DndWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -29,7 +31,13 @@ defmodule DndWeb.ConnCase do
     end
   end
 
-  setup do
+  setup tags do
+    :ok = Sandbox.checkout(Dnd.Repo)
+
+    unless tags[:async] do
+      Sandbox.mode(Dnd.Repo, {:shared, self()})
+    end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end
