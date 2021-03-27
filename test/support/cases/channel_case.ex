@@ -15,6 +15,8 @@ defmodule DndWeb.ChannelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       # Import conveniences for testing with channels
@@ -23,5 +25,15 @@ defmodule DndWeb.ChannelCase do
       # The default endpoint for testing
       @endpoint DndWeb.Endpoint
     end
+  end
+
+  setup tags do
+    :ok = Sandbox.checkout(Dnd.Repo)
+
+    unless tags[:async] do
+      Sandbox.mode(Dnd.Repo, {:shared, self()})
+    end
+
+    :ok
   end
 end

@@ -7,6 +7,9 @@
 # General application configuration
 import Config
 
+config :dnd,
+  ecto_repos: [Dnd.Repo]
+
 # Configures the endpoint
 config :dnd, DndWeb.Endpoint,
   url: [host: "localhost"],
