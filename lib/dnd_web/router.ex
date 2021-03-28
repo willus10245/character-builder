@@ -1,13 +1,13 @@
 defmodule DndWeb.Router do
   use DndWeb, :router
-  import Phoenix.LiveDashboard.Router
 
   # here is a comment
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
+    plug :put_root_layout, {DndWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -19,13 +19,15 @@ defmodule DndWeb.Router do
   scope "/", DndWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", PageLive, :index
   end
 
-  if Mix.env() == :dev do
+  if Mix.env() in [:dev, :test] do
+    import Phoenix.LiveDashboard.Router
+
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard"
+      live_dashboard "/dashboard", metrics: DndWeb.Telemetry
     end
   end
 

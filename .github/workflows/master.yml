@@ -63,7 +63,7 @@ jobs:
 
   deploy:
     # only run this job if the build job succeeds
-    needs: build
+    needs: test
 
     runs-on: ubuntu-latest
 
