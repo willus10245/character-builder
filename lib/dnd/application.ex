@@ -6,12 +6,12 @@ defmodule Dnd.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
       Dnd.Repo,
       DndWeb.Telemetry,
       {Phoenix.PubSub, [name: Dnd.PubSub, adapter: Phoenix.PubSub.PG2]},
-      DndWeb.Endpoint
+      DndWeb.Endpoint,
+      Dnd.CharacterBuilder
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

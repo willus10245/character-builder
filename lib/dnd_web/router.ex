@@ -1,7 +1,7 @@
 defmodule DndWeb.Router do
   use DndWeb, :router
 
-  # here is a comment
+  # import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -20,6 +20,7 @@ defmodule DndWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    get "/character", CharacterController, :index
   end
 
   if Mix.env() in [:dev, :test] do
