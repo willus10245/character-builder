@@ -28,6 +28,10 @@ defmodule Dnd.CharacterBuilder do
     GenServer.call(__MODULE__, :get_character)
   end
 
+  def get_character_sheet do
+    GenServer.call(__MODULE__, :get_character_sheet)
+  end
+
   # Callbacks
 
   def init(_) do
@@ -36,6 +40,10 @@ defmodule Dnd.CharacterBuilder do
 
   def handle_call(:get_character, _from, character) do
     {:reply, {:ok, character}, character}
+  end
+
+  def handle_call(:get_character_sheet, _from, character) do
+    {:reply, {:ok, Character.build_character_sheet(character)}, character}
   end
 
   if Mix.env() == :test do

@@ -4,7 +4,7 @@ defmodule DndWeb.CharacterController do
   alias Dnd.CharacterBuilder
 
   def index(conn, _params) do
-    {:ok, character} = CharacterBuilder.get_character()
+    {:ok, character} = CharacterBuilder.get_character_sheet()
 
     render(conn, "index.html", character: character)
   end

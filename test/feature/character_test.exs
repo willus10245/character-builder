@@ -30,7 +30,7 @@ defmodule Dnd.Feature.CharacterTest do
       session
       |> visit("/character")
       |> find(con_stat)
-      |> assert_text("12")
+      |> assert_text("14")
     end
   end
 end
