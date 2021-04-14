@@ -11,12 +11,14 @@ defmodule Dnd.FeatureCase do
       import Plug.Conn
       import Phoenix.ConnTest
       alias DndWeb.Router.Helpers, as: Routes
-      # use Hound.Helpers
+      use Wallaby.Feature
+
+      import Wallaby.Query
 
       @endpoint DndWeb.Endpoint
       @moduletag :feature
 
-      def data_test(test_id), do: "//*[@data-test='#{test_id}']"
+      def data_test(test_id), do: css("[data-test='#{test_id}']")
     end
   end
 end

@@ -1,8 +1,6 @@
 defmodule Dnd.Feature.PageTest do
   use ExUnit.Case
-  use Wallaby.Feature
-
-  import Wallaby.Query
+  use Dnd.FeatureCase
 
   feature "site exists", %{session: session} do
     session

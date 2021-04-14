@@ -1,37 +1,36 @@
-# defmodule Dnd.Feature.CharacterTest do
-#   use ExUnit.Case
-#   use Dnd.FeatureCase
+defmodule Dnd.Feature.CharacterTest do
+  use ExUnit.Case
+  use Dnd.FeatureCase
 
-#   alias Dnd.CharacterBuilder
+  alias Dnd.CharacterBuilder
 
-#   defp create_character(attrs) do
-#     attrs = Enum.into(attrs, %{})
-#     struct!(%CharacterBuilder.Character{}, attrs)
-#   end
+  @character %CharacterBuilder.Character{
+    name: "Thorodin Ironfist",
+    race: :dwarf,
+    class: :cleric,
+    base_abilities: %{
+      str: 12,
+      con: 12,
+      dex: 12,
+      wis: 12,
+      int: 12,
+      cha: 12
+    }
+  }
 
-#   setup do
-#     Hound.start_session()
+  describe "Given a dwarf character with a base constitution score of 10" do
+    setup do
+      {:ok, _} = GenServer.call(CharacterBuilder, {:test_set_character, @character})
+      :ok
+    end
 
-#     :ok
-#   end
+    feature "When a user loads the character sheet", %{session: session} do
+      con_stat = data_test("con_stat")
 
-#   describe "Given a dwarf character with a base constitution score of 10" do
-#     setup do
-#       character = create_character(race: :dwarf, abilities: %{con: 10})
-
-#       {:ok, _} = GenServer.call(CharacterBuilder, {:test_set_character, character})
-#       :ok
-#     end
-
-#     test "When a user loads the character sheet" do
-#       navigate_to("http://localhost:4002/character")
-
-#       # Then it will show a constitution score of 12
-#       assert "12" =
-#                "con_stat"
-#                |> data_test()
-#                |> (&find_element(:xpath, &1)).()
-#                |> inner_text()
-#     end
-#   end
-# end
+      session
+      |> visit("/character")
+      |> find(con_stat)
+      |> assert_text("14")
+    end
+  end
+end

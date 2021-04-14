@@ -1,0 +1,46 @@
+<div class="p-4 mb-4 divide-y-2 rounded-lg text-gray-900 bg-gray-100">
+  <h2 class="text-lg text-gray-700 pb-4">Character Details</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4">
+    <div class="col-span-2 md:col-span-1">
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Name</div>
+      <div class="text-lg"><%= @character.name %></div>
+    </div>
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Class</div>
+      <div class="text-lg"><%= display(@character.class) %></div>
+    </div>
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Race</div>
+      <div class="text-lg"><%= display(@character.race) %></div>
+    </div>
+  </div>
+</div>
+<div class="p-4 mb-4 divide-y-2 rounded-lg text-gray-900 bg-gray-100">
+  <h2 class="text-lg text-gray-700 pb-4">Abilities</h2>
+  <div class="grid grid-cols-3 gap-4 justify-items-center pt-4">
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Str</div>
+      <div class="text-lg"><%= @character.abilities.str %></div>
+    </div>
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Dex</div>
+      <div class="text-lg"><%= @character.abilities.dex %></div>
+    </div>
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Con</div>
+      <div class="text-lg" data-test="con_stat"><%= @character.abilities.con %></div>
+    </div>
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Int</div>
+      <div class="text-lg"><%= @character.abilities.int %></div>
+    </div>
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Wis</div>
+      <div class="text-lg"><%= @character.abilities.wis %></div>
+    </div>
+    <div>
+      <div class="text-sm text-gray-500 uppercase tracking-wide pb-1">Cha</div>
+      <div class="text-lg"><%= @character.abilities.cha %></div>
+    </div>
+  </div>
+</div>
